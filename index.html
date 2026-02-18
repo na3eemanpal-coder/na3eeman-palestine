@@ -5,159 +5,291 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>نعيماً | Na3eeman - تطبيق الخدمات والمحلات في فلسطين</title>
+    <!-- Google Fonts: Cairo for Arabic, Inter for English -->
+    <link href="https://fonts.googleapis.com/css2?family=Cairo:wght@400;700;900&family=Inter:wght@400;700&display=swap"
+        rel="stylesheet">
     <style>
         :root {
             --primary-blue: #0047AB;
-            /* Your branding blue */
+            --deep-blue: #001f4d;
+            --glass-bg: rgba(255, 255, 255, 0.1);
+            --glass-border: rgba(255, 255, 255, 0.2);
             --white: #ffffff;
-            --light-gray: #f4f7f6;
-            --accent-red: #ff3b30;
+            --accent-orange: #FF8F00;
+        }
+
+        * {
+            box-sizing: border-box;
+            transition: all 0.3s ease;
         }
 
         body {
             margin: 0;
             padding: 0;
-            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-            background-color: var(--light-gray);
-            color: #333;
-            text-align: center;
+            font-family: 'Cairo', 'Inter', sans-serif;
+            background-color: #000;
+            color: var(--white);
+            overflow-x: hidden;
+        }
+
+        /* Background Animated Gradient */
+        .bg-gradient {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: radial-gradient(circle at 50% 50%, var(--deep-blue) 0%, #000 100%);
+            z-index: -1;
         }
 
         .hero {
-            background: linear-gradient(135deg, var(--primary-blue) 0%, #002D62 100%);
-            color: var(--white);
-            padding: 80px 20px;
-            clip-path: ellipse(150% 100% at 50% 0%);
+            min-height: 100vh;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            padding: 100px 20px;
+            text-align: center;
+            position: relative;
+        }
+
+        .logo-container {
+            margin-bottom: 30px;
+            animation: float 6s ease-in-out infinite;
         }
 
         .logo {
-            width: 150px;
-            height: 150px;
-            background: white;
-            border-radius: 30px;
+            width: 140px;
+            height: 140px;
+            background: var(--white);
+            border-radius: 35px;
             padding: 20px;
-            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.2);
-            margin-bottom: 20px;
-            display: inline-block;
+            box-shadow: 0 0 50px rgba(0, 71, 171, 0.5);
         }
 
         h1 {
-            font-size: 3rem;
-            margin: 10px 0;
-            letter-spacing: 1px;
+            font-size: clamp(2.5rem, 8vw, 4.5rem);
+            font-weight: 900;
+            margin: 0;
+            background: linear-gradient(to bottom, #fff 0%, #aaa 100%);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            text-shadow: 0 10px 30px rgba(0, 0, 0, 0.5);
         }
 
-        p.tagline {
-            font-size: 1.2rem;
-            opacity: 0.9;
-            max-width: 600px;
-            margin: 0 auto 40px;
+        .tagline {
+            font-size: 1.25rem;
+            max-width: 700px;
+            margin: 20px auto 40px;
+            color: rgba(255, 255, 255, 0.7);
+            line-height: 1.6;
         }
 
+        /* Glassmorphic Download Button */
         .download-btn {
-            background-color: var(--white);
-            color: var(--primary-blue);
-            padding: 18px 40px;
-            font-size: 1.2rem;
-            font-weight: bold;
+            background: var(--primary-blue);
+            color: white;
+            padding: 20px 50px;
+            font-size: 1.3rem;
+            font-weight: 700;
             text-decoration: none;
-            border-radius: 50px;
+            border-radius: 100px;
             display: inline-flex;
             align-items: center;
-            gap: 10px;
-            transition: transform 0.3s ease, box-shadow 0.3s ease;
-            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
+            gap: 15px;
+            box-shadow: 0 10px 40px rgba(0, 71, 171, 0.6);
+            border: 1px solid var(--glass-border);
+            position: relative;
+            overflow: hidden;
         }
 
         .download-btn:hover {
-            transform: translateY(-5px);
-            box-shadow: 0 10px 25px rgba(0, 0, 0, 0.2);
+            transform: scale(1.05) translateY(-5px);
+            box-shadow: 0 20px 60px rgba(0, 71, 171, 0.8);
         }
 
+        .download-btn::after {
+            content: '';
+            position: absolute;
+            top: -50%;
+            left: -50%;
+            width: 200%;
+            height: 200%;
+            background: linear-gradient(45deg, transparent, rgba(255, 255, 255, 0.2), transparent);
+            transform: rotate(45deg);
+            animation: shine 3s infinite;
+        }
+
+        /* Feature Grid */
         .features {
-            padding: 60px 20px;
             display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
             gap: 30px;
-            max-width: 1000px;
-            margin: 0 auto;
+            max-width: 1200px;
+            margin: 60px auto;
+            padding: 0 20px;
         }
 
         .feature-card {
-            background: white;
-            padding: 30px;
-            border-radius: 20px;
-            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.05);
+            background: var(--glass-bg);
+            backdrop-filter: blur(15px);
+            -webkit-backdrop-filter: blur(15px);
+            border: 1px solid var(--glass-border);
+            padding: 40px;
+            border-radius: 30px;
+            text-align: right;
         }
 
-        .feature-card i {
-            font-size: 2rem;
-            color: var(--primary-blue);
-            margin-bottom: 15px;
+        .feature-card:hover {
+            background: rgba(255, 255, 255, 0.15);
+            transform: translateY(-10px);
+        }
+
+        .feature-icon {
+            font-size: 2.5rem;
+            margin-bottom: 20px;
+            display: block;
+            color: var(--accent-orange);
+        }
+
+        .feature-card h3 {
+            font-size: 1.5rem;
+            margin: 0 0 10px;
+        }
+
+        .feature-card p {
+            color: rgba(255, 255, 255, 0.6);
+            margin: 0;
+            line-height: 1.5;
+        }
+
+        /* Smartphone Preview Container */
+        .preview-section {
+            padding: 100px 20px;
+            position: relative;
+        }
+
+        .phone-mockup {
+            max-width: 320px;
+            margin: 0 auto;
+            border: 12px solid #333;
+            border-radius: 40px;
+            overflow: hidden;
+            box-shadow: 0 50px 100px rgba(0, 0, 0, 0.8);
+            background: #000;
+        }
+
+        .phone-mockup img {
+            width: 100%;
             display: block;
         }
 
-        .footer {
-            padding: 40px;
-            font-size: 0.9rem;
-            opacity: 0.7;
+        /* Animations */
+        @keyframes float {
+
+            0%,
+            100% {
+                transform: translateY(0);
+            }
+
+            50% {
+                transform: translateY(-20px);
+            }
         }
 
-        /* Mobile specific adjustments */
-        @media (max-width: 600px) {
-            h1 {
-                font-size: 2.2rem;
+        @keyframes shine {
+            0% {
+                left: -150%;
             }
 
-            .hero {
-                padding: 50px 20px;
+            100% {
+                left: 150%;
             }
+        }
+
+        .footer {
+            padding: 80px 20px 40px;
+            text-align: center;
+            opacity: 0.5;
+            font-size: 0.9rem;
+        }
+
+        /* Floating particles */
+        .particle {
+            position: absolute;
+            background: rgba(255, 143, 0, 0.4);
+            border-radius: 50%;
+            pointer-events: none;
+            z-index: -1;
+            filter: blur(5px);
         }
     </style>
 </head>
 
 <body>
 
+    <div class="bg-gradient"></div>
+
     <section class="hero">
-        <div class="logo">
-            <!-- Replacing with a placeholder if the server can't serve local file directly easily to browser -->
-            <img src="assets/icon/blue_icon_v2.png" alt="Na3eeman Logo"
-                style="width: 100%; height: 100%; object-fit: contain;">
+        <div class="logo-container">
+            <img src="blue_icon_v2.png" alt="Logo" class="logo">
         </div>
         <h1>نعيماً | Na3eeman</h1>
-        <p class="tagline">المتجر الرقمي الأول والشامل للمحلات والخدمات في فلسطين. كل ما تحتاجه في مكان واحد.</p>
+        <p class="tagline">اكتشف فلسطين بلمسة واحدة. المتجر الرقمي المتكامل للخدمات والمحلات التجارية، مع أدق خريطة
+            ليلية تفاعلية للضفة وغزة.</p>
 
         <a href="https://drive.google.com/file/d/1zPxORIv4f3SSBVlsmnjUXfecZvo0wc9c/view?usp=sharing"
             class="download-btn" target="_blank">
-            <span>تحميل للأندرويد (Google Drive)</span>
-            <svg width="24" height="24" viewBox="0 0 24 24" fill="currentColor">
+            <svg width="28" height="28" viewBox="0 0 24 24" fill="currentColor">
                 <path d="M19 9h-4V3H9v6H5l7 7 7-7zM5 18v2h14v-2H5z" />
             </svg>
+            <span>تحميل مجاني للأندرويد</span>
         </a>
     </section>
 
+    <div class="preview-section">
+        <div class="phone-mockup">
+            <!-- Using the generated feature graphic as a placeholder for the phone screen -->
+            <img src="aptoide_feature_1024x500.png" alt="App Preview">
+        </div>
+    </div>
+
     <section class="features">
         <div class="feature-card">
-            <i>📍</i>
-            <h3>خريطة تفاعلية</h3>
-            <p>استكشف المحلات والخدمات حولك بدقة جغرافية عالية.</p>
+            <span class="feature-icon">🏙️</span>
+            <h3>دليل المحلات الشامل</h3>
+            <p>تصفح آلاف الصالونات والمصالح التجارية في مدينتك وقريتك بسهولة تامة.</p>
         </div>
         <div class="feature-card">
-            <i>🌃</i>
-            <h3>الوضع الليلي</h3>
-            <p>خريطة ليلية مبهرة تضيء مدننا وقرانا الفلسطينية.</p>
+            <span class="feature-icon">🌌</span>
+            <h3>خريطة ليلية مبهرة</h3>
+            <p>إنارة واقعية تغطي كافة أرجاء فلسطين والقرى الجبلية والريف بدقة متناهية.</p>
         </div>
         <div class="feature-card">
-            <i>🇵🇸</i>
-            <h3>صناعة محلية</h3>
-            <p>تطبيق مصمم خصيصاً ليناسب احتياجات السوق الفلسطيني.</p>
+            <span class="feature-icon">⚡</span>
+            <h3>سريع ومستقر</h3>
+            <p>تقنيات متطورة تضمن لك تجربة مستخدم سريعة وسلسة حتى في ظروف الإنترنت الضعيفة.</p>
         </div>
     </section>
 
     <footer class="footer">
-        <p>© 2026 نعيماً فلسطين. جميع الحقوق محفوظة.</p>
+        <p>© 2026 نعيماً فلسطين. صممت لتكون صلة الوصل بينك وبين خدمات وطنك.</p>
     </footer>
 
+    <script>
+        // Create some floating particles
+        for (let i = 0; i < 15; i++) {
+            let p = document.createElement('div');
+            p.className = 'particle';
+            p.style.width = Math.random() * 20 + 5 + 'px';
+            p.style.height = p.style.width;
+            p.style.left = Math.random() * 100 + 'vw';
+            p.style.top = Math.random() * 100 + 'vh';
+            p.style.animation = `float ${Math.random() * 10 + 5}s linear infinite`;
+            document.body.appendChild(p);
+        }
+    </script>
 </body>
 
 </html>
