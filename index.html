@@ -4,43 +4,72 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>نعيماً | Na3eeman - تطبيق الخدمات والمحلات في فلسطين</title>
-    <!-- Google Fonts: Cairo for Arabic, Inter for English -->
+    <title>نعيماً | Na3eeman - الأناقة الفلسطينية الرقمية</title>
     <link href="https://fonts.googleapis.com/css2?family=Cairo:wght@400;700;900&family=Inter:wght@400;700&display=swap"
         rel="stylesheet">
     <style>
         :root {
             --primary-blue: #0047AB;
             --deep-blue: #001f4d;
-            --glass-bg: rgba(255, 255, 255, 0.1);
-            --glass-border: rgba(255, 255, 255, 0.2);
+            --glass-bg: rgba(255, 255, 255, 0.03);
+            --glass-border: rgba(255, 255, 255, 0.1);
             --white: #ffffff;
             --accent-orange: #FF8F00;
+            --glow-color: rgba(0, 71, 171, 0.4);
         }
 
         * {
             box-sizing: border-box;
-            transition: all 0.3s ease;
+            transition: all 0.4s cubic-bezier(0.16, 1, 0.3, 1);
+        }
+
+        html {
+            scroll-behavior: smooth;
         }
 
         body {
             margin: 0;
             padding: 0;
             font-family: 'Cairo', 'Inter', sans-serif;
-            background-color: #000;
+            background-color: #030303;
             color: var(--white);
             overflow-x: hidden;
         }
 
-        /* Background Animated Gradient */
-        .bg-gradient {
+        /* 🌌 Ultra-Premium Background */
+        .bg-canvas {
             position: fixed;
             top: 0;
             left: 0;
             width: 100%;
             height: 100%;
-            background: radial-gradient(circle at 50% 50%, var(--deep-blue) 0%, #000 100%);
+            z-index: -2;
+            background: linear-gradient(180deg, #000 0%, var(--deep-blue) 100%);
+        }
+
+        .bg-mesh {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
             z-index: -1;
+            background:
+                radial-gradient(circle at 20% 30%, rgba(0, 71, 171, 0.15) 0%, transparent 40%),
+                radial-gradient(circle at 80% 70%, rgba(255, 143, 0, 0.05) 0%, transparent 40%);
+            opacity: 0.8;
+        }
+
+        /* ✨ Scroll-Reveal Base Classes */
+        .reveal {
+            opacity: 0;
+            transform: translateY(30px);
+            transition: all 0.8s cubic-bezier(0.2, 0, 0, 1);
+        }
+
+        .reveal.active {
+            opacity: 1;
+            transform: translateY(0);
         }
 
         .hero {
@@ -49,244 +78,293 @@
             flex-direction: column;
             align-items: center;
             justify-content: center;
-            padding: 100px 20px;
-            text-align: center;
-            position: relative;
+            padding: 120px 24px;
+            perspective: 1000px;
         }
 
-        .logo-container {
-            margin-bottom: 30px;
-            animation: float 6s ease-in-out infinite;
+        /* 🖼️ Parallax Logo */
+        .logo-parallax {
+            transform-style: preserve-3d;
+            margin-bottom: 50px;
         }
 
         .logo {
-            width: 140px;
-            height: 140px;
+            width: 160px;
+            height: 160px;
             background: var(--white);
-            border-radius: 35px;
-            padding: 20px;
-            box-shadow: 0 0 50px rgba(0, 71, 171, 0.5);
+            border-radius: 40px;
+            padding: 24px;
+            box-shadow: 0 0 80px var(--glow-color);
+            transform: translateZ(50px);
         }
 
         h1 {
-            font-size: clamp(2.5rem, 8vw, 4.5rem);
+            font-size: clamp(3rem, 10vw, 6rem);
             font-weight: 900;
             margin: 0;
-            background: linear-gradient(to bottom, #fff 0%, #aaa 100%);
+            letter-spacing: -2px;
+            line-height: 1.1;
+            background: linear-gradient(180deg, #FFFFFF 30%, rgba(255, 255, 255, 0.4) 100%);
             -webkit-background-clip: text;
             -webkit-text-fill-color: transparent;
-            text-shadow: 0 10px 30px rgba(0, 0, 0, 0.5);
         }
 
         .tagline {
-            font-size: 1.25rem;
-            max-width: 700px;
-            margin: 20px auto 40px;
-            color: rgba(255, 255, 255, 0.7);
-            line-height: 1.6;
+            font-size: 1.5rem;
+            max-width: 800px;
+            margin: 30px auto 50px;
+            color: rgba(255, 255, 255, 0.6);
+            line-height: 1.7;
+            font-weight: 300;
         }
 
-        /* Glassmorphic Download Button */
-        .download-btn {
+        /* 💎 World-Class Button */
+        .cta-btn {
             background: var(--primary-blue);
-            color: white;
-            padding: 20px 50px;
-            font-size: 1.3rem;
-            font-weight: 700;
+            padding: 24px 60px;
+            font-size: 1.4rem;
+            font-weight: 800;
             text-decoration: none;
+            color: white;
             border-radius: 100px;
-            display: inline-flex;
+            display: flex;
             align-items: center;
-            gap: 15px;
-            box-shadow: 0 10px 40px rgba(0, 71, 171, 0.6);
-            border: 1px solid var(--glass-border);
+            gap: 20px;
+            box-shadow:
+                0 0 0 0 rgba(0, 71, 171, 0.4),
+                0 15px 40px rgba(0, 71, 171, 0.4);
+            border: 1px solid rgba(255, 255, 255, 0.1);
             position: relative;
             overflow: hidden;
+            animation: pulse 3s infinite;
         }
 
-        .download-btn:hover {
+        .cta-btn:hover {
             transform: scale(1.05) translateY(-5px);
-            box-shadow: 0 20px 60px rgba(0, 71, 171, 0.8);
+            box-shadow: 0 30px 60px rgba(0, 71, 171, 0.6);
+            background: #0056D2;
         }
 
-        .download-btn::after {
-            content: '';
-            position: absolute;
-            top: -50%;
-            left: -50%;
-            width: 200%;
-            height: 200%;
-            background: linear-gradient(45deg, transparent, rgba(255, 255, 255, 0.2), transparent);
-            transform: rotate(45deg);
-            animation: shine 3s infinite;
-        }
-
-        /* Feature Grid */
-        .features {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
-            gap: 30px;
-            max-width: 1200px;
-            margin: 60px auto;
-            padding: 0 20px;
-        }
-
-        .feature-card {
-            background: var(--glass-bg);
-            backdrop-filter: blur(15px);
-            -webkit-backdrop-filter: blur(15px);
-            border: 1px solid var(--glass-border);
-            padding: 40px;
-            border-radius: 30px;
-            text-align: right;
-        }
-
-        .feature-card:hover {
-            background: rgba(255, 255, 255, 0.15);
-            transform: translateY(-10px);
-        }
-
-        .feature-icon {
-            font-size: 2.5rem;
-            margin-bottom: 20px;
-            display: block;
-            color: var(--accent-orange);
-        }
-
-        .feature-card h3 {
-            font-size: 1.5rem;
-            margin: 0 0 10px;
-        }
-
-        .feature-card p {
-            color: rgba(255, 255, 255, 0.6);
-            margin: 0;
-            line-height: 1.5;
-        }
-
-        /* Smartphone Preview Container */
-        .preview-section {
-            padding: 100px 20px;
+        /* 📱 Premium Device Floating */
+        .device-container {
+            margin-top: 100px;
             position: relative;
         }
 
-        .phone-mockup {
-            max-width: 320px;
-            margin: 0 auto;
-            border: 12px solid #333;
+        .iphone {
+            width: 340px;
+            height: 680px;
+            background: #111;
+            border-radius: 55px;
+            border: 10px solid #222;
+            padding: 10px;
+            position: relative;
+            box-shadow: 0 100px 200px rgba(0, 0, 0, 0.9);
+            animation: phoneFloat 8s ease-in-out infinite;
+        }
+
+        .iphone-screen {
+            width: 100%;
+            height: 100%;
+            background: #000;
             border-radius: 40px;
             overflow: hidden;
-            box-shadow: 0 50px 100px rgba(0, 0, 0, 0.8);
-            background: #000;
+            background-image: url('aptoide_feature_1024x500.png');
+            background-size: cover;
+            background-position: center;
         }
 
-        .phone-mockup img {
-            width: 100%;
-            display: block;
+        /* 🌟 Ultra-Refined Feature Cards */
+        .feature-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
+            gap: 40px;
+            max-width: 1400px;
+            margin: 150px auto;
+            padding: 0 32px;
         }
 
-        /* Animations */
-        @keyframes float {
+        .glass-card {
+            background: linear-gradient(135deg, rgba(255, 255, 255, 0.05) 0%, rgba(255, 255, 255, 0.01) 100%);
+            backdrop-filter: blur(30px);
+            -webkit-backdrop-filter: blur(30px);
+            border: 1px solid var(--glass-border);
+            padding: 50px;
+            border-radius: 45px;
+            text-align: right;
+            position: relative;
+        }
+
+        .glass-card::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            border-radius: 45px;
+            padding: 2px;
+            background: linear-gradient(135deg, rgba(255, 255, 255, 0.2), transparent, rgba(0, 71, 171, 0.3));
+            mask: linear-gradient(#fff 0 0) content-box, linear-gradient(#fff 0 0);
+            -webkit-mask: linear-gradient(#fff 0 0) content-box, linear-gradient(#fff 0 0);
+            mask-composite: exclude;
+            -webkit-mask-composite: destination-out;
+        }
+
+        .glass-card h3 {
+            font-size: 2rem;
+            margin: 20px 0 15px;
+            font-weight: 800;
+            color: var(--white);
+        }
+
+        .glass-card p {
+            font-size: 1.15rem;
+            color: rgba(255, 255, 255, 0.5);
+            line-height: 1.8;
+            margin: 0;
+        }
+
+        /* 💡 Interactive Glow Dots */
+        .glow-dot {
+            position: absolute;
+            width: 150px;
+            height: 150px;
+            background: var(--primary-blue);
+            filter: blur(100px);
+            border-radius: 50%;
+            z-index: -1;
+            opacity: 0.3;
+        }
+
+        @keyframes pulse {
+            0% {
+                box-shadow: 0 0 0 0 rgba(0, 71, 171, 0.4), 0 15px 40px rgba(0, 71, 171, 0.4);
+            }
+
+            70% {
+                box-shadow: 0 0 0 20px rgba(0, 71, 171, 0), 0 15px 40px rgba(0, 71, 171, 0.4);
+            }
+
+            100% {
+                box-shadow: 0 0 0 0 rgba(0, 71, 171, 0), 0 15px 40px rgba(0, 71, 171, 0.4);
+            }
+        }
+
+        @keyframes phoneFloat {
 
             0%,
             100% {
-                transform: translateY(0);
+                transform: translateY(0) rotate(0deg);
             }
 
             50% {
-                transform: translateY(-20px);
-            }
-        }
-
-        @keyframes shine {
-            0% {
-                left: -150%;
-            }
-
-            100% {
-                left: 150%;
+                transform: translateY(-40px) rotate(2deg);
             }
         }
 
         .footer {
-            padding: 80px 20px 40px;
+            padding: 100px 32px;
             text-align: center;
-            opacity: 0.5;
-            font-size: 0.9rem;
+            border-top: 1px solid var(--glass-border);
+            background: rgba(0, 0, 0, 0.5);
         }
 
-        /* Floating particles */
-        .particle {
-            position: absolute;
-            background: rgba(255, 143, 0, 0.4);
-            border-radius: 50%;
-            pointer-events: none;
-            z-index: -1;
-            filter: blur(5px);
+        .footer p {
+            font-weight: 300;
+            color: rgba(255, 255, 255, 0.4);
+            letter-spacing: 1px;
         }
     </style>
 </head>
 
 <body>
 
-    <div class="bg-gradient"></div>
+    <div class="bg-canvas"></div>
+    <div class="bg-mesh"></div>
 
-    <section class="hero">
-        <div class="logo-container">
+    <section class="hero reveal">
+        <div class="logo-parallax" id="hero-logo">
             <img src="blue_icon_v2.png" alt="Logo" class="logo">
         </div>
         <h1>نعيماً | Na3eeman</h1>
         <p class="tagline">أناقة فلسطينية بلمسة رقمية. وجهتك الأولى والوحيدة لاكتشاف أرقى صالونات الحلاقة والخدمات في
             وطنك، مع خريطة ليلية حيوية تضيء طريقك نحو الجمال والتميز.</p>
 
-        <a href="https://drive.google.com/file/d/1zPxORIv4f3SSBVlsmnjUXfecZvo0wc9c/view?usp=sharing"
-            class="download-btn" target="_blank">
-            <svg width="28" height="28" viewBox="0 0 24 24" fill="currentColor">
+        <a href="https://drive.google.com/file/d/1zPxORIv4f3SSBVlsmnjUXfecZvo0wc9c/view?usp=sharing" class="cta-btn"
+            target="_blank">
+            <svg width="32" height="32" viewBox="0 0 24 24" fill="currentColor">
                 <path d="M19 9h-4V3H9v6H5l7 7 7-7zM5 18v2h14v-2H5z" />
             </svg>
-            <span>تحميل مجاني للأندرويد</span>
+            <span>احصل على التطبيق مجاناً</span>
         </a>
+
+        <div class="device-container reveal">
+            <div class="iphone">
+                <div class="iphone-screen"></div>
+            </div>
+            <div class="glow-dot" style="top: 20%; left: -20%;"></div>
+            <div class="glow-dot" style="bottom: 10%; right: -20%; background: var(--accent-orange);"></div>
+        </div>
     </section>
 
-    <div class="preview-section">
-        <div class="phone-mockup">
-            <!-- Using the generated feature graphic as a placeholder for the phone screen -->
-            <img src="aptoide_feature_1024x500.png" alt="App Preview">
+    <div class="feature-grid">
+        <div class="glass-card reveal">
+            <span style="font-size: 3rem;">🌟</span>
+            <h3>أناقة تليق بك</h3>
+            <p>اختر الأفضل من بين مئات الصالونات والمصالح المتخصصة التي تمنحك إطلالة "نعيماً" المثالية التي تستحقها.</p>
+        </div>
+        <div class="glass-card reveal">
+            <span style="font-size: 3rem;">🗺️</span>
+            <h3>نبض مدينتك</h3>
+            <p>خريطة تفاعلية فريدة تعيد رسم ملامح فلسطين بلمسات ضوئية ساحرة، تربطك بقلب مجتمعك في كل لحظة.</p>
+        </div>
+        <div class="glass-card reveal">
+            <span style="font-size: 3rem;">🇵🇸</span>
+            <h3>فخر الصناعة</h3>
+            <p>بنينا "نعيماً" بأيدي فلسطينية مبدعة، ليكون رفيقك الذكي في جولاتك اليومية، بمستوى جودة تخاطب العالم.</p>
         </div>
     </div>
 
-    <section class="features">
-        <div class="feature-card">
-            <span class="feature-icon">✨</span>
-            <h3>أناقة تليق بك</h3>
-            <p>اختر الأفضل من بين مئات الصالونات والمصالح المتخصصة التي تمنحك إطلالة "نعيماً" المثالية.</p>
-        </div>
-        <div class="feature-card">
-            <span class="feature-icon">🏙️</span>
-            <h3>نبض مدينتك</h3>
-            <p>خريطة تفاعلية فريدة تعيد رسم ملامح فلسطين بلمسات ضوئية ساحرة، تربطك بقلب مجتمعك.</p>
-        </div>
-        <div class="feature-card">
-            <span class="feature-icon">🤝</span>
-            <h3>خدمة موثوقة</h3>
-            <p>بنينا "نعيماً" بأيدي فلسطينية، ليكون رفيقك الدائم في جولاتك اليومية، بكل سرعة وسهولة.</p>
-        </div>
-    </section>
-
-    <footer class="footer">
-        <p>© 2026 نعيماً فلسطين. صممت لتكون صلة الوصل بينك وبين خدمات وطنك.</p>
+    <footer class="footer reveal">
+        <p>© 2026 نعيماً فلسطين • صُنع ليضيء دروب الجمال والخدمات في وطننا الحبيب</p>
     </footer>
 
     <script>
-        // Create some floating particles
-        for (let i = 0; i < 15; i++) {
+        // --- 🌊 World-Class Scroll Reveal ---
+        function reveal() {
+            var reveals = document.querySelectorAll(".reveal");
+            for (var i = 0; i < reveals.length; i++) {
+                var windowHeight = window.innerHeight;
+                var elementTop = reveals[i].getBoundingClientRect().top;
+                var elementVisible = 150;
+                if (elementTop < windowHeight - elementVisible) {
+                    reveals[i].classList.add("active");
+                }
+            }
+        }
+        window.addEventListener("scroll", reveal);
+        window.addEventListener("load", reveal); // Trigger on initial load
+
+        // --- 🎯 Parallax Effect on Hero Logo ---
+        const heroLogo = document.getElementById('hero-logo');
+        window.addEventListener('mousemove', (e) => {
+            const x = (window.innerWidth / 2 - e.pageX) / 25;
+            const y = (window.innerHeight / 2 - e.pageY) / 25;
+            heroLogo.style.transform = `rotateY(${x}deg) rotateX(${-y}deg)`;
+        });
+
+        // --- 💡 Random Floating Particles Refined ---
+        for (let i = 0; i < 20; i++) {
             let p = document.createElement('div');
-            p.className = 'particle';
-            p.style.width = Math.random() * 20 + 5 + 'px';
+            p.style.position = 'fixed';
+            p.style.background = 'rgba(255, 143, 0, 0.1)';
+            p.style.width = Math.random() * 5 + 'px';
             p.style.height = p.style.width;
             p.style.left = Math.random() * 100 + 'vw';
             p.style.top = Math.random() * 100 + 'vh';
-            p.style.animation = `float ${Math.random() * 10 + 5}s linear infinite`;
+            p.style.filter = 'blur(2px)';
+            p.style.zIndex = '-1';
             document.body.appendChild(p);
         }
     </script>
