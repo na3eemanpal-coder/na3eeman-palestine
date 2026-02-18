@@ -1,12 +1,14 @@
 <!DOCTYPE html>
 <html lang="ar" dir="rtl">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>نعيماً | Na3eeman - تطبيق الخدمات والمحلات في فلسطين</title>
     <style>
         :root {
-            --primary-blue: #0047AB; /* Your branding blue */
+            --primary-blue: #0047AB;
+            /* Your branding blue */
             --white: #ffffff;
             --light-gray: #f4f7f6;
             --accent-red: #ff3b30;
@@ -34,7 +36,7 @@
             background: white;
             border-radius: 30px;
             padding: 20px;
-            box-shadow: 0 10px 30px rgba(0,0,0,0.2);
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.2);
             margin-bottom: 20px;
             display: inline-block;
         }
@@ -64,12 +66,12 @@
             align-items: center;
             gap: 10px;
             transition: transform 0.3s ease, box-shadow 0.3s ease;
-            box-shadow: 0 5px 15px rgba(0,0,0,0.1);
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
         }
 
         .download-btn:hover {
             transform: translateY(-5px);
-            box-shadow: 0 10px 25px rgba(0,0,0,0.2);
+            box-shadow: 0 10px 25px rgba(0, 0, 0, 0.2);
         }
 
         .features {
@@ -85,7 +87,7 @@
             background: white;
             padding: 30px;
             border-radius: 20px;
-            box-shadow: 0 5px 15px rgba(0,0,0,0.05);
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.05);
         }
 
         .feature-card i {
@@ -103,24 +105,34 @@
 
         /* Mobile specific adjustments */
         @media (max-width: 600px) {
-            h1 { font-size: 2.2rem; }
-            .hero { padding: 50px 20px; }
+            h1 {
+                font-size: 2.2rem;
+            }
+
+            .hero {
+                padding: 50px 20px;
+            }
         }
     </style>
 </head>
+
 <body>
 
     <section class="hero">
         <div class="logo">
             <!-- Replacing with a placeholder if the server can't serve local file directly easily to browser -->
-            <img src="assets/icon/blue_icon_v2.png" alt="Na3eeman Logo" style="width: 100%; height: 100%; object-fit: contain;">
+            <img src="assets/icon/blue_icon_v2.png" alt="Na3eeman Logo"
+                style="width: 100%; height: 100%; object-fit: contain;">
         </div>
         <h1>نعيماً | Na3eeman</h1>
         <p class="tagline">المتجر الرقمي الأول والشامل للمحلات والخدمات في فلسطين. كل ما تحتاجه في مكان واحد.</p>
-        
-        <a href="app-release.apk" class="download-btn" download>
-            <span>تحميل للأندرويد (APK)</span>
-            <svg width="24" height="24" viewBox="0 0 24 24" fill="currentColor"><path d="M19 9h-4V3H9v6H5l7 7 7-7zM5 18v2h14v-2H5z"/></svg>
+
+        <a href="https://drive.google.com/file/d/1zPxORIv4f3SSBVlsmnjUXfecZvo0wc9c/view?usp=sharing"
+            class="download-btn" target="_blank">
+            <span>تحميل للأندرويد (Google Drive)</span>
+            <svg width="24" height="24" viewBox="0 0 24 24" fill="currentColor">
+                <path d="M19 9h-4V3H9v6H5l7 7 7-7zM5 18v2h14v-2H5z" />
+            </svg>
         </a>
     </section>
 
@@ -147,4 +159,5 @@
     </footer>
 
 </body>
+
 </html>
