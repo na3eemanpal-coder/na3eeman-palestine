@@ -1,0 +1,150 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>نعيماً | Na3eeman - تطبيق الخدمات والمحلات في فلسطين</title>
+    <style>
+        :root {
+            --primary-blue: #0047AB; /* Your branding blue */
+            --white: #ffffff;
+            --light-gray: #f4f7f6;
+            --accent-red: #ff3b30;
+        }
+
+        body {
+            margin: 0;
+            padding: 0;
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            background-color: var(--light-gray);
+            color: #333;
+            text-align: center;
+        }
+
+        .hero {
+            background: linear-gradient(135deg, var(--primary-blue) 0%, #002D62 100%);
+            color: var(--white);
+            padding: 80px 20px;
+            clip-path: ellipse(150% 100% at 50% 0%);
+        }
+
+        .logo {
+            width: 150px;
+            height: 150px;
+            background: white;
+            border-radius: 30px;
+            padding: 20px;
+            box-shadow: 0 10px 30px rgba(0,0,0,0.2);
+            margin-bottom: 20px;
+            display: inline-block;
+        }
+
+        h1 {
+            font-size: 3rem;
+            margin: 10px 0;
+            letter-spacing: 1px;
+        }
+
+        p.tagline {
+            font-size: 1.2rem;
+            opacity: 0.9;
+            max-width: 600px;
+            margin: 0 auto 40px;
+        }
+
+        .download-btn {
+            background-color: var(--white);
+            color: var(--primary-blue);
+            padding: 18px 40px;
+            font-size: 1.2rem;
+            font-weight: bold;
+            text-decoration: none;
+            border-radius: 50px;
+            display: inline-flex;
+            align-items: center;
+            gap: 10px;
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+            box-shadow: 0 5px 15px rgba(0,0,0,0.1);
+        }
+
+        .download-btn:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 10px 25px rgba(0,0,0,0.2);
+        }
+
+        .features {
+            padding: 60px 20px;
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 30px;
+            max-width: 1000px;
+            margin: 0 auto;
+        }
+
+        .feature-card {
+            background: white;
+            padding: 30px;
+            border-radius: 20px;
+            box-shadow: 0 5px 15px rgba(0,0,0,0.05);
+        }
+
+        .feature-card i {
+            font-size: 2rem;
+            color: var(--primary-blue);
+            margin-bottom: 15px;
+            display: block;
+        }
+
+        .footer {
+            padding: 40px;
+            font-size: 0.9rem;
+            opacity: 0.7;
+        }
+
+        /* Mobile specific adjustments */
+        @media (max-width: 600px) {
+            h1 { font-size: 2.2rem; }
+            .hero { padding: 50px 20px; }
+        }
+    </style>
+</head>
+<body>
+
+    <section class="hero">
+        <div class="logo">
+            <!-- Replacing with a placeholder if the server can't serve local file directly easily to browser -->
+            <img src="assets/icon/blue_icon_v2.png" alt="Na3eeman Logo" style="width: 100%; height: 100%; object-fit: contain;">
+        </div>
+        <h1>نعيماً | Na3eeman</h1>
+        <p class="tagline">المتجر الرقمي الأول والشامل للمحلات والخدمات في فلسطين. كل ما تحتاجه في مكان واحد.</p>
+        
+        <a href="app-release.apk" class="download-btn" download>
+            <span>تحميل للأندرويد (APK)</span>
+            <svg width="24" height="24" viewBox="0 0 24 24" fill="currentColor"><path d="M19 9h-4V3H9v6H5l7 7 7-7zM5 18v2h14v-2H5z"/></svg>
+        </a>
+    </section>
+
+    <section class="features">
+        <div class="feature-card">
+            <i>📍</i>
+            <h3>خريطة تفاعلية</h3>
+            <p>استكشف المحلات والخدمات حولك بدقة جغرافية عالية.</p>
+        </div>
+        <div class="feature-card">
+            <i>🌃</i>
+            <h3>الوضع الليلي</h3>
+            <p>خريطة ليلية مبهرة تضيء مدننا وقرانا الفلسطينية.</p>
+        </div>
+        <div class="feature-card">
+            <i>🇵🇸</i>
+            <h3>صناعة محلية</h3>
+            <p>تطبيق مصمم خصيصاً ليناسب احتياجات السوق الفلسطيني.</p>
+        </div>
+    </section>
+
+    <footer class="footer">
+        <p>© 2026 نعيماً فلسطين. جميع الحقوق محفوظة.</p>
+    </footer>
+
+</body>
+</html>
