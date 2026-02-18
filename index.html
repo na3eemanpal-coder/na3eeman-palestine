@@ -275,6 +275,52 @@
             color: rgba(255, 255, 255, 0.4);
             letter-spacing: 1px;
         }
+
+        /* 📱 Mobile Adjustments & Media Queries */
+        @media (max-width: 768px) {
+            .hero {
+                padding: 80px 24px;
+            }
+
+            .logo {
+                width: 120px;
+                height: 120px;
+                border-radius: 30px;
+            }
+
+            h1 {
+                font-size: clamp(2.5rem, 12vw, 4rem);
+            }
+
+            .tagline {
+                font-size: 1.1rem;
+                margin: 20px auto 40px;
+            }
+
+            .cta-btn {
+                padding: 20px 40px;
+                font-size: 1.2rem;
+                width: 100%;
+                justify-content: center;
+            }
+
+            .iphone {
+                width: 260px;
+                height: 520px;
+                border-width: 8px;
+            }
+
+            .feature-grid {
+                grid-template-columns: 1fr;
+                gap: 24px;
+                margin: 80px auto;
+            }
+
+            .glass-card {
+                padding: 32px;
+                border-radius: 35px;
+            }
+        }
     </style>
 </head>
 
@@ -348,11 +394,15 @@
 
         // --- 🎯 Parallax Effect on Hero Logo ---
         const heroLogo = document.getElementById('hero-logo');
-        window.addEventListener('mousemove', (e) => {
-            const x = (window.innerWidth / 2 - e.pageX) / 25;
-            const y = (window.innerHeight / 2 - e.pageY) / 25;
-            heroLogo.style.transform = `rotateY(${x}deg) rotateX(${-y}deg)`;
-        });
+        const isTouch = 'ontouchstart' in window || navigator.maxTouchPoints > 0;
+
+        if (!isTouch) {
+            window.addEventListener('mousemove', (e) => {
+                const x = (window.innerWidth / 2 - e.pageX) / 25;
+                const y = (window.innerHeight / 2 - e.pageY) / 25;
+                heroLogo.style.transform = `rotateY(${x}deg) rotateX(${-y}deg)`;
+            });
+        }
 
         // --- 💡 Random Floating Particles Refined ---
         for (let i = 0; i < 20; i++) {
