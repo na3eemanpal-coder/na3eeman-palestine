@@ -11,11 +11,11 @@
         :root {
             --primary-blue: #0047AB;
             --deep-blue: #001f4d;
-            --glass-bg: rgba(255, 255, 255, 0.03);
-            --glass-border: rgba(255, 255, 255, 0.1);
+            --glass-bg: rgba(255, 255, 255, 0.02);
+            --glass-border: rgba(255, 255, 255, 0.08);
             --white: #ffffff;
             --accent-orange: #FF8F00;
-            --glow-color: rgba(0, 71, 171, 0.4);
+            --glow-color: rgba(0, 71, 171, 0.3);
         }
 
         * {
@@ -25,46 +25,34 @@
 
         html {
             scroll-behavior: smooth;
+            background-color: #030303;
         }
 
         body {
             margin: 0;
             padding: 0;
             font-family: 'Cairo', 'Inter', sans-serif;
-            background-color: #030303;
             color: var(--white);
             overflow-x: hidden;
+            background: #000;
         }
 
-        /* 🌌 Ultra-Premium Background */
-        .bg-canvas {
-            position: fixed;
-            top: 0;
-            left: 0;
-            width: 100%;
-            height: 100%;
-            z-index: -2;
-            background: linear-gradient(180deg, #000 0%, var(--deep-blue) 100%);
-        }
-
-        .bg-mesh {
+        /* 🌌 Pro Canvas Container */
+        #canvas-bg {
             position: fixed;
             top: 0;
             left: 0;
             width: 100%;
             height: 100%;
             z-index: -1;
-            background:
-                radial-gradient(circle at 20% 30%, rgba(0, 71, 171, 0.15) 0%, transparent 40%),
-                radial-gradient(circle at 80% 70%, rgba(255, 143, 0, 0.05) 0%, transparent 40%);
-            opacity: 0.8;
+            background: radial-gradient(circle at center, #001f4d 0%, #000 100%);
         }
 
-        /* ✨ Scroll-Reveal Base Classes */
+        /* 🎭 Layout Layers */
         .reveal {
             opacity: 0;
             transform: translateY(30px);
-            transition: all 0.8s cubic-bezier(0.2, 0, 0, 1);
+            transition: all 1s cubic-bezier(0.2, 0, 0, 1);
         }
 
         .reveal.active {
@@ -80,9 +68,9 @@
             justify-content: center;
             padding: 120px 24px;
             perspective: 1000px;
+            text-align: center;
         }
 
-        /* 🖼️ Parallax Logo */
         .logo-parallax {
             transform-style: preserve-3d;
             margin-bottom: 50px;
@@ -113,12 +101,11 @@
             font-size: 1.5rem;
             max-width: 800px;
             margin: 30px auto 50px;
-            color: rgba(255, 255, 255, 0.6);
+            color: rgba(255, 255, 255, 0.7);
             line-height: 1.7;
             font-weight: 300;
         }
 
-        /* 💎 World-Class Button */
         .cta-btn {
             background: var(--primary-blue);
             padding: 24px 60px;
@@ -127,12 +114,10 @@
             text-decoration: none;
             color: white;
             border-radius: 100px;
-            display: flex;
+            display: inline-flex;
             align-items: center;
             gap: 20px;
-            box-shadow:
-                0 0 0 0 rgba(0, 71, 171, 0.4),
-                0 15px 40px rgba(0, 71, 171, 0.4);
+            box-shadow: 0 15px 40px rgba(0, 71, 171, 0.4);
             border: 1px solid rgba(255, 255, 255, 0.1);
             position: relative;
             overflow: hidden;
@@ -152,14 +137,14 @@
         }
 
         .iphone {
-            width: 340px;
-            height: 680px;
+            width: 320px;
+            height: 640px;
             background: #111;
-            border-radius: 55px;
-            border: 10px solid #222;
+            border-radius: 50px;
+            border: 8px solid #222;
             padding: 10px;
             position: relative;
-            box-shadow: 0 100px 200px rgba(0, 0, 0, 0.9);
+            box-shadow: 0 100px 200px rgba(0, 0, 0, 0.8);
             animation: phoneFloat 8s ease-in-out infinite;
         }
 
@@ -167,7 +152,7 @@
             width: 100%;
             height: 100%;
             background: #000;
-            border-radius: 40px;
+            border-radius: 35px;
             overflow: hidden;
             background-image: url('aptoide_feature_1024x500.png');
             background-size: cover;
@@ -185,9 +170,9 @@
         }
 
         .glass-card {
-            background: linear-gradient(135deg, rgba(255, 255, 255, 0.05) 0%, rgba(255, 255, 255, 0.01) 100%);
-            backdrop-filter: blur(30px);
-            -webkit-backdrop-filter: blur(30px);
+            background: linear-gradient(135deg, rgba(255, 255, 255, 0.04) 0%, rgba(255, 255, 255, 0.01) 100%);
+            backdrop-filter: blur(25px);
+            -webkit-backdrop-filter: blur(25px);
             border: 1px solid var(--glass-border);
             padding: 50px;
             border-radius: 45px;
@@ -195,46 +180,17 @@
             position: relative;
         }
 
-        .glass-card::before {
-            content: '';
-            position: absolute;
-            top: 0;
-            left: 0;
-            right: 0;
-            bottom: 0;
-            border-radius: 45px;
-            padding: 2px;
-            background: linear-gradient(135deg, rgba(255, 255, 255, 0.2), transparent, rgba(0, 71, 171, 0.3));
-            mask: linear-gradient(#fff 0 0) content-box, linear-gradient(#fff 0 0);
-            -webkit-mask: linear-gradient(#fff 0 0) content-box, linear-gradient(#fff 0 0);
-            mask-composite: exclude;
-            -webkit-mask-composite: destination-out;
-        }
-
         .glass-card h3 {
             font-size: 2rem;
             margin: 20px 0 15px;
             font-weight: 800;
-            color: var(--white);
         }
 
         .glass-card p {
             font-size: 1.15rem;
-            color: rgba(255, 255, 255, 0.5);
+            color: rgba(255, 255, 255, 0.6);
             line-height: 1.8;
             margin: 0;
-        }
-
-        /* 💡 Interactive Glow Dots */
-        .glow-dot {
-            position: absolute;
-            width: 150px;
-            height: 150px;
-            background: var(--primary-blue);
-            filter: blur(100px);
-            border-radius: 50%;
-            z-index: -1;
-            opacity: 0.3;
         }
 
         @keyframes pulse {
@@ -259,7 +215,7 @@
             }
 
             50% {
-                transform: translateY(-40px) rotate(2deg);
+                transform: translateY(-30px) rotate(1deg);
             }
         }
 
@@ -267,16 +223,10 @@
             padding: 100px 32px;
             text-align: center;
             border-top: 1px solid var(--glass-border);
-            background: rgba(0, 0, 0, 0.5);
+            background: rgba(0, 0, 0, 0.8);
         }
 
-        .footer p {
-            font-weight: 300;
-            color: rgba(255, 255, 255, 0.4);
-            letter-spacing: 1px;
-        }
-
-        /* 📱 Mobile Adjustments & Media Queries */
+        /* 📱 Mobile Adjustments */
         @media (max-width: 768px) {
             .hero {
                 padding: 80px 24px;
@@ -294,7 +244,6 @@
 
             .tagline {
                 font-size: 1.1rem;
-                margin: 20px auto 40px;
             }
 
             .cta-btn {
@@ -307,13 +256,10 @@
             .iphone {
                 width: 260px;
                 height: 520px;
-                border-width: 8px;
             }
 
             .feature-grid {
                 grid-template-columns: 1fr;
-                gap: 24px;
-                margin: 80px auto;
             }
 
             .glass-card {
@@ -326,8 +272,7 @@
 
 <body>
 
-    <div class="bg-canvas"></div>
-    <div class="bg-mesh"></div>
+    <canvas id="canvas-bg"></canvas>
 
     <section class="hero reveal">
         <div class="logo-parallax" id="hero-logo">
@@ -349,8 +294,6 @@
             <div class="iphone">
                 <div class="iphone-screen"></div>
             </div>
-            <div class="glow-dot" style="top: 20%; left: -20%;"></div>
-            <div class="glow-dot" style="bottom: 10%; right: -20%; background: var(--accent-orange);"></div>
         </div>
     </section>
 
@@ -377,45 +320,131 @@
     </footer>
 
     <script>
-        // --- 🌊 World-Class Scroll Reveal ---
+        // --- 🌌 World-Class Interactive Canvas ---
+        const canvas = document.getElementById('canvas-bg');
+        const ctx = canvas.getContext('2d');
+        let particles = [];
+        const particleCount = window.innerWidth < 768 ? 40 : 100;
+        const interactionDistance = 150;
+
+        let mouse = { x: null, y: null };
+
+        function initCanvas() {
+            canvas.width = window.innerWidth;
+            canvas.height = window.innerHeight;
+            particles = [];
+            for (let i = 0; i < particleCount; i++) {
+                particles.push(new Particle());
+            }
+        }
+
+        class Particle {
+            constructor() {
+                this.x = Math.random() * canvas.width;
+                this.y = Math.random() * canvas.height;
+                this.size = Math.random() * 2 + 1;
+                this.speedX = Math.random() * 0.5 - 0.25;
+                this.speedY = Math.random() * 0.5 - 0.25;
+                this.color = i % 10 === 0 ? '#FF8F00' : '#0047AB'; // Blue with a few orange stars
+            }
+            update() {
+                this.x += this.speedX;
+                this.y += this.speedY;
+
+                if (this.x > canvas.width) this.x = 0;
+                if (this.x < 0) this.x = canvas.width;
+                if (this.y > canvas.height) this.y = 0;
+                if (this.y < 0) this.y = canvas.height;
+            }
+            draw() {
+                ctx.fillStyle = this.color;
+                ctx.globalAlpha = 0.5;
+                ctx.beginPath();
+                ctx.arc(this.x, this.y, this.size, 0, Math.PI * 2);
+                ctx.fill();
+            }
+        }
+
+        function handleParticles() {
+            for (let i = 0; i < particles.length; i++) {
+                particles[i].update();
+                particles[i].draw();
+
+                for (let j = i; j < particles.length; j++) {
+                    const dx = particles[i].x - particles[j].x;
+                    const dy = particles[i].y - particles[j].y;
+                    const distance = Math.sqrt(dx * dx + dy * dy);
+
+                    if (distance < interactionDistance) {
+                        ctx.strokeStyle = particles[i].color;
+                        ctx.lineWidth = 0.2;
+                        ctx.globalAlpha = 1 - (distance / interactionDistance);
+                        ctx.beginPath();
+                        ctx.moveTo(particles[i].x, particles[i].y);
+                        ctx.lineTo(particles[j].x, particles[j].y);
+                        ctx.stroke();
+                    }
+                }
+
+                // Mouse interaction
+                if (mouse.x) {
+                    const dx = particles[i].x - mouse.x;
+                    const dy = particles[i].y - mouse.y;
+                    const distance = Math.sqrt(dx * dx + dy * dy);
+                    if (distance < interactionDistance * 1.5) {
+                        ctx.strokeStyle = '#fff';
+                        ctx.lineWidth = 0.5;
+                        ctx.globalAlpha = 0.2;
+                        ctx.beginPath();
+                        ctx.moveTo(particles[i].x, particles[i].y);
+                        ctx.lineTo(mouse.x, mouse.y);
+                        ctx.stroke();
+                    }
+                }
+            }
+        }
+
+        function animate() {
+            ctx.clearRect(0, 0, canvas.width, canvas.height);
+            handleParticles();
+            requestAnimationFrame(animate);
+        }
+
+        window.addEventListener('resize', initCanvas);
+        window.addEventListener('mousemove', (e) => {
+            mouse.x = e.x;
+            mouse.y = e.y;
+        });
+        window.addEventListener('mouseout', () => {
+            mouse.x = null;
+            mouse.y = null;
+        });
+
+        initCanvas();
+        animate();
+
+        // --- 🌊 Scroll Reveal ---
         function reveal() {
             var reveals = document.querySelectorAll(".reveal");
             for (var i = 0; i < reveals.length; i++) {
                 var windowHeight = window.innerHeight;
                 var elementTop = reveals[i].getBoundingClientRect().top;
-                var elementVisible = 150;
-                if (elementTop < windowHeight - elementVisible) {
+                if (elementTop < windowHeight - 100) {
                     reveals[i].classList.add("active");
                 }
             }
         }
         window.addEventListener("scroll", reveal);
-        window.addEventListener("load", reveal); // Trigger on initial load
+        window.addEventListener("load", reveal);
 
-        // --- 🎯 Parallax Effect on Hero Logo ---
+        // --- 🎯 Parallax Hero ---
         const heroLogo = document.getElementById('hero-logo');
-        const isTouch = 'ontouchstart' in window || navigator.maxTouchPoints > 0;
-
-        if (!isTouch) {
+        if (!('ontouchstart' in window)) {
             window.addEventListener('mousemove', (e) => {
                 const x = (window.innerWidth / 2 - e.pageX) / 25;
                 const y = (window.innerHeight / 2 - e.pageY) / 25;
                 heroLogo.style.transform = `rotateY(${x}deg) rotateX(${-y}deg)`;
             });
-        }
-
-        // --- 💡 Random Floating Particles Refined ---
-        for (let i = 0; i < 20; i++) {
-            let p = document.createElement('div');
-            p.style.position = 'fixed';
-            p.style.background = 'rgba(255, 143, 0, 0.1)';
-            p.style.width = Math.random() * 5 + 'px';
-            p.style.height = p.style.width;
-            p.style.left = Math.random() * 100 + 'vw';
-            p.style.top = Math.random() * 100 + 'vh';
-            p.style.filter = 'blur(2px)';
-            p.style.zIndex = '-1';
-            document.body.appendChild(p);
         }
     </script>
 </body>
